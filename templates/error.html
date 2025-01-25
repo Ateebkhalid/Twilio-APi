@@ -1,0 +1,7 @@
+﻿{% extends 'base.html' %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<h1>An Error Occurred</h1>
+<p>{{ error }}</p>
+<a href="{{ url_for('dashboard') }}">Go back to Dashboard</a>
+{% endblock %}

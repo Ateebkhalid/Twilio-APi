@@ -1,0 +1,10 @@
+﻿{% extends 'base.html' %}
+{% block title %}SMS Campaign{% endblock %}
+{% block content %}
+<h1>Send SMS</h1>
+<form method="POST">
+    <input type="text" name="to" placeholder="Recipient Number" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Send SMS</button>
+</form>
+{% endblock %}

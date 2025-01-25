@@ -1,0 +1,25 @@
+﻿{% extends 'base.html' %}
+{% block title %}SMS History{% endblock %}
+{% block content %}
+<h1>SMS History</h1>
+<table>
+    <tr>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+    {% for record in sms_records.items %}
+    <tr>
+        <td>{{ record.message }}</td>
+        <td>{{ record.date }}</td>
+        <td>{{ record.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% if sms_records.has_prev %}
+<a href="{{ url_for('sms_history', page=sms_records.prev_num) }}">Previous</a>
+{% endif %}
+{% if sms_records.has_next %}
+<a href="{{ url_for('sms_history ', page=sms_records.next_num) }}">Next</a>
+{% endif %}
+{% endblock %}

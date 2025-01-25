@@ -1,0 +1,26 @@
+﻿{% extends 'base.html' %}
+{% block title %}Manage Users{% endblock %}
+{% block content %}
+<h1>Manage Users</h1>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ 'Active' if user.is_active else 'Pending' }}</td>
+        <td>
+            {% if not user.is_active %}
+            <a href="{{ url_for('approve_user', user_id=user.id) }}">Approve</a>
+            {% endif %}
+            <a href="{{ url_for('reject_user', user_id=user.id) }}">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
